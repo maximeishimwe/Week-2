@@ -14,10 +14,7 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Install repo packages
         run: npm install --force
-
-      - name: Add the github action coverage
-        permissions:
-        contents: write
+        run: npm test
 
       - name: Run tests with coverage
         run: npm test -- --coverage --coverageReporters=text-lcov | coveralls
