@@ -14,13 +14,5 @@ jobs:
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: Install repo packages
         run: npm install --force
-      - name: Run tests with coverage
-        run: npm test -- --coverage --coverageReporters=text-lcov
-
-      - name: Generate coverage badge
-        id: coverage-badge
-        run: bash -c 'npx jest-coverage-badge'
-
-      - name: Save coverage badge
-        run: echo "::set-output name=coverage-badge::$(cat coverage-badge.svg)"
-        if: always()
+      - name: Run tests 
+        run: npm test 
