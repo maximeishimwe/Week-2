@@ -1,0 +1,456 @@
+@import "./colors.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.font-sans-serif {
+  font-family: sans-serif;
+}
+
+.font-serif {
+  font-family: serif;
+}
+
+.font-mono {
+  font-family: monospace;
+}
+
+body {
+  color: $white;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: $black;
+
+  display: flex;
+  justify-content: center;
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: $gray;
+}
+
+main {
+  width: 50%;
+  padding: 2rem 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  header {
+    display: flex;
+    justify-content: space-between;
+
+    .options {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      .fonts-dropdown-menu {
+        position: relative;
+        font-weight: 700;
+        color: $white;
+        font-size: 0.8rem;
+
+        button {
+          border: none;
+          background-color: transparent;
+
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          font-family: inherit;
+          font-weight: inherit;
+          color: inherit;
+
+          cursor: pointer;
+        }
+
+        .dropdown-menu {
+          position: absolute;
+          z-index: 1;
+
+          width: 8rem;
+          border-radius: 1rem;
+
+          list-style: none;
+          text-align: left;
+
+          li {
+            cursor: pointer;
+          }
+        }
+
+        .hide {
+          display: none;
+        }
+      }
+
+      .separator {
+        height: 80%;
+        width: 2px;
+        background-color: $light-gray;
+      }
+    }
+  }
+
+  form.search-bar-container {
+    position: relative;
+
+    .search-bar {
+      width: 100%;
+      position: relative;
+
+      input {
+        width: 100%;
+        height: 3rem;
+        border: none;
+        border-radius: 0.5rem;
+        padding: 0 1rem;
+
+        background-color: $dark-gray;
+        color: $white;
+        font-family: inherit;
+
+        &.error {
+          outline: 2px solid $orange;
+        }
+
+        &:active:not(.error),
+        &:focus:not(.error) {
+          outline: 2px solid $violet;
+        }
+      }
+
+      button {
+        border: none;
+        background-color: transparent;
+
+        position: absolute;
+        top: 30%;
+        right: 2.5%;
+
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+
+    p.error {
+      color: $orange;
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+
+    .loading-effect {
+      position: absolute;
+      top: 60%;
+      right: 45%;
+    }
+  }
+
+  section.word-container {
+    display: flex;
+    justify-content: space-between;
+
+    .word-and-phonetic {
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+      }
+
+      p {
+        color: $violet;
+      }
+    }
+
+    button {
+      border: none;
+      background-color: transparent;
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+
+  // General styles for noun and verb sections
+  section.meaning-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    .title {
+      display: flex;
+      place-items: center;
+
+      h2 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        font-style: italic;
+        margin-right: 1rem;
+      }
+    }
+
+    .meaning {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      h3 {
+        color: $light-gray;
+        font-size: 1rem;
+        font-weight: 500;
+      }
+
+      ul {
+        padding-left: 2rem;
+
+        li {
+          margin-top: 0.75rem;
+
+          &::marker {
+            color: $violet;
+          }
+
+          .example {
+            color: $light-gray;
+          }
+        }
+      }
+    }
+
+    .synonyms {
+      display: flex;
+      gap: 1rem;
+
+      h3 {
+        color: $light-gray;
+        font-size: 1rem;
+      }
+
+      .synonyms-list {
+        display: flex;
+        gap: 0.5rem;
+
+        p {
+          font-size: 1rem;
+          font-weight: 700;
+          color: $violet;
+
+          // Underline effect
+          background-image: linear-gradient(120deg, $violet, $orange);
+          background-position: left bottom;
+          background-size: 0% 2px;
+          background-repeat: no-repeat;
+
+          cursor: pointer;
+          transition-property: transform background-size;
+          transition: 0.3s ease-in-out;
+
+          &:hover {
+            transform: scale(1.05);
+            background-size: 100% 2px;
+          }
+        }
+      }
+    }
+  }
+
+  footer {
+    .source {
+      margin-top: 1rem;
+
+      display: flex;
+      gap: 1rem;
+
+      p {
+        color: $light-gray;
+      }
+
+      span {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+
+        a {
+          display: flex;
+          align-items: center;
+
+          color: $white;
+          text-decoration: none;
+        }
+      }
+
+      &:hover {
+        text-decoration: underline;
+
+        p {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  section.word-not-found {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+
+    .not-found {
+      width: 6rem;
+      color: $violet;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    p {
+      color: $light-gray;
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (width > 900px) {
+  main {
+    form.search-bar-container {
+      .search-bar {
+        button {
+          &:hover {
+            transform: scale(1.3);
+          }
+        }
+      }
+    }
+
+    section.word-container {
+      button {
+        svg {
+          &:hover {
+            transform: scale(1.05);
+
+            circle {
+              opacity: 1;
+            }
+
+            path {
+              fill: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+html[data-theme="light"] {
+  #root {
+    color: $dark-gray;
+    background-color: $white;
+  }
+
+  main {
+    header {
+      .options {
+        .fonts-dropdown-menu {
+          color: $dark-gray;
+        }
+      }
+    }
+
+    form.search-bar-container {
+      .search-bar {
+        input {
+          background-color: $very-light-gray;
+          color: $dark-gray;
+        }
+      }
+    }
+
+    section.meaning-section {
+      .title {
+        h2 {
+          color: $dark-gray;
+        }
+      }
+    }
+
+    footer {
+      p {
+        color: $light-gray;
+      }
+
+      span {
+        a {
+          color: $dark-gray;
+        }
+      }
+    }
+  }
+}
+
+// MEDIA QUERIES
+
+@media (width <=1200px) {
+  main {
+    width: 80%;
+  }
+}
+
+@media (width <=768px) {
+  main {
+    width: 90%;
+
+    section.meaning-section {
+      .synonyms {
+        .synonyms-list {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+          width: 100%;
+          row-gap: 1rem;
+        }
+      }
+    }
+  }
+}
+
+@media (width <=480px) {
+  main {
+    width: 92%;
+    // height: 100%;
+
+    form.search-bar-container {
+      .search-bar {
+        input {
+          height: 2.5rem;
+          font-size: 0.9rem;
+        }
+      }
+
+      .loading-effect {
+        top: 50%;
+        right: 40%;
+      }
+    }
+
+    footer {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+}
