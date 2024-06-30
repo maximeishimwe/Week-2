@@ -1,0 +1,351 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+.font-sans-serif {
+  font-family: sans-serif;
+}
+
+.font-serif {
+  font-family: serif;
+}
+
+.font-mono {
+  font-family: monospace;
+}
+
+body {
+  color: #ffffff;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: #050505;
+  display: flex;
+  justify-content: center;
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  background-color: #3a3a3a;
+}
+
+main {
+  width: 50%;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+main header {
+  display: flex;
+  justify-content: space-between;
+}
+main header .options {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+main header .options .fonts-dropdown-menu {
+  position: relative;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 0.8rem;
+}
+main header .options .fonts-dropdown-menu button {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+main header .options .fonts-dropdown-menu .dropdown-menu {
+  position: absolute;
+  z-index: 1;
+  width: 8rem;
+  border-radius: 1rem;
+  list-style: none;
+  text-align: left;
+}
+main header .options .fonts-dropdown-menu .dropdown-menu li {
+  cursor: pointer;
+}
+main header .options .fonts-dropdown-menu .hide {
+  display: none;
+}
+main header .options .separator {
+  height: 80%;
+  width: 2px;
+  background-color: #757575;
+}
+main form.search-bar-container {
+  position: relative;
+}
+main form.search-bar-container .search-bar {
+  width: 100%;
+  position: relative;
+}
+main form.search-bar-container .search-bar input {
+  width: 100%;
+  height: 3rem;
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0 1rem;
+  background-color: #2d2d2d;
+  color: #ffffff;
+}
+main form.search-bar-container .search-bar input.error {
+  outline: 2px solid #ff5252;
+}
+main form.search-bar-container .search-bar input:active:not(.error),
+main form.search-bar-container .search-bar input:focus:not(.error) {
+  outline: 2px solid #a445ed;
+}
+main form.search-bar-container .search-bar button {
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 30%;
+  right: 2.5%;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+main form.search-bar-container p.error {
+  color: #ff5252;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+main form.search-bar-container .loading-effect {
+  position: absolute;
+  top: 60%;
+  right: 45%;
+}
+main section.word-container {
+  display: flex;
+  justify-content: space-between;
+}
+main section.word-container .word-and-phonetic h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+main section.word-container .word-and-phonetic p {
+  color: #a445ed;
+}
+main section.word-container button {
+  border: none;
+  background-color: transparent;
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+main section.word-container button svg {
+  transition-property: transform;
+  transition: 0.3s ease-in-out;
+}
+main section.word-container button svg circle {
+  transition-property: opacity;
+  transition: 0.3s ease-in-out;
+}
+main section.word-container button svg path {
+  transition-property: fill;
+  transition: 0.3s ease-in-out;
+}
+main section.word-container button:active {
+  transform: scale(0.9);
+}
+main section.meaning-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+main section.meaning-section .title {
+  display: flex;
+  place-items: center;
+}
+main section.meaning-section .title h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-style: italic;
+  margin-right: 1rem;
+}
+main section.meaning-section .meaning {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+main section.meaning-section .meaning h3 {
+  color: #757575;
+  font-size: 1rem;
+  font-weight: 500;
+}
+main section.meaning-section .meaning ul {
+  padding-left: 2rem;
+}
+main section.meaning-section .meaning ul li {
+  margin-top: 0.75rem;
+}
+main section.meaning-section .meaning ul li::marker {
+  color: #a445ed;
+}
+main section.meaning-section .meaning ul li .example {
+  color: #757575;
+}
+main section.meaning-section .synonyms {
+  display: flex;
+  gap: 1rem;
+}
+main section.meaning-section .synonyms h3 {
+  color: #757575;
+  font-size: 1rem;
+}
+main section.meaning-section .synonyms .synonyms-list {
+  display: flex;
+  gap: 0.5rem;
+}
+main section.meaning-section .synonyms .synonyms-list p {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #a445ed;
+  background-image: linear-gradient(120deg, #a445ed, #ff5252);
+  background-position: left bottom;
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition-property: transform background-size;
+  transition: 0.3s ease-in-out;
+}
+main section.meaning-section .synonyms .synonyms-list p:hover {
+  transform: scale(1.05);
+  background-size: 100% 2px;
+}
+main footer .source {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+main footer .source p {
+  color: #757575;
+}
+main footer .source span {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+main footer .source span a {
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  text-decoration: none;
+}
+main footer .source:hover {
+  text-decoration: underline;
+}
+main footer .source:hover p {
+  text-decoration: underline;
+}
+main section.word-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+}
+main section.word-not-found .not-found {
+  width: 6rem;
+  color: #a445ed;
+}
+main section.word-not-found h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+main section.word-not-found p {
+  color: #757575;
+  font-size: 1rem;
+}
+
+@media (width > 900px) {
+  main header svg {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  main header svg:hover {
+    transform: scale(1.15);
+  }
+  main form.search-bar-container .search-bar button:hover {
+    transform: scale(1.3);
+  }
+  main section.word-container button svg:hover {
+    transform: scale(1.05);
+  }
+  main section.word-container button svg:hover circle {
+    opacity: 1;
+  }
+  main section.word-container button svg:hover path {
+    fill: #ffffff;
+  }
+}
+
+html[data-theme="light"] #root {
+  color: #2d2d2d;
+  background-color: #ffffff;
+}
+html[data-theme="light"] main header .options .fonts-dropdown-menu {
+  color: #2d2d2d;
+}
+html[data-theme="light"] main form.search-bar-container .search-bar input {
+  background-color: #cecece;
+  color: #2d2d2d;
+}
+html[data-theme="light"] main section.meaning-section .title h2 {
+  color: #2d2d2d;
+}
+html[data-theme="light"] main footer p {
+  color: #757575;
+}
+html[data-theme="light"] main footer span a {
+  color: #2d2d2d;
+}
+
+@media (width <= 1200px) {
+  main {
+    width: 80%;
+  }
+}
+@media (width <= 768px) {
+  main {
+    width: 90%;
+  }
+  main section.meaning-section .synonyms .synonyms-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+    width: 100%;
+    row-gap: 1rem;
+  }
+}
+@media (width <= 480px) {
+  main {
+    width: 92%;
+  }
+  main form.search-bar-container .search-bar input {
+    height: 2.5rem;
+    font-size: 0.9rem;
+  }
+  main form.search-bar-container .loading-effect {
+    top: 50%;
+    right: 40%;
+  }
+  main footer {
+    flex-direction: column;
+    gap: 0;
+  }
+} /*# sourceMappingURL=App.css.map */
