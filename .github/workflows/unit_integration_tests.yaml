@@ -17,7 +17,7 @@ jobs:
       - name: Run tests 
         run: npm test
       - name: Run tests with coverage
-        run: npm test -- --coverage --coverageReporters=text-lcov | coveralls
+        run: npm test -- --coverage --coverageReporters=text-lcov
       - name: Generate coverage badge
         id: coverage-badge
         run: npx jest-coverage-badge
