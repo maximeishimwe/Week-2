@@ -1,4 +1,6 @@
-# Week-2
+# Dictionary Web App
+
+![Coverage](coverage-badge.svg)
 
 # Unit Tests
 - Components: Test rendering, props, events.
